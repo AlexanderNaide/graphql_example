@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/graph_ql_test_db?createDatabaseIfNotExist=true
+    username: root
+    password: 312808895 # дом
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    show-sql: true
+#    hibernate:
+      #      ddl-auto: validate #Невмешательство в структуру БД, только чтение
+#      ddl-auto: create #Полная очистка и создание новой БД при старте Spring
+      #      ddl-auto: create-drop #Полная очистка и создание новой БД при старте Spring + очистка после завершения Spring
+#      ddl-auto: update #Обновление структуры БД
+
+  graphql:
+    graphiql:
+      enabled: true
+      path: /graphiql
