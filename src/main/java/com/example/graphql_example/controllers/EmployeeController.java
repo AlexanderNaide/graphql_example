@@ -39,25 +39,17 @@ public class EmployeeController {
     }
 
     @MutationMapping
-//    public Employee newEmployee(@Argument EmployeeInput employee) {
-    public Employee newEmployee(@Argument String firstname,
-                                @Argument String lastname,
-                                @Argument String position,
-                                @Argument Integer salary,
-                                @Argument Integer age,
-                                @Argument Integer organizationId,
-                                @Argument Integer departmentId
-                                ) {
+    public Employee newEmployee(@Argument Employee employee) {
         Department department = departmentRepository
-                .findById(departmentId).get();
+                .findById(employee.getId()).get();
         Organization organization = organizationRepository
-                .findById(organizationId).get();
+                .findById(employee.getOrganization().getId()).get();
         return employeeRepository.save(new Employee(
-                firstname,
-                lastname,
-                position,
-                salary,
-                age,
+                employee.getFirstname(),
+                employee.getLastname(),
+                employee.getPosition(),
+                employee.getSalary(),
+                employee.getAge(),
                 department,
                 organization));
     }
